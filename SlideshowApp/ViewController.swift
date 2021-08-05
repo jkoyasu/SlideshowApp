@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         slideButton.setTitle("再生", for: .normal)
         
-        photo = UIImage(imageLiteralResourceName: String(num))
+        photo = UIImage(imageLiteralResourceName: String(num)+".jpg")
         photoView.image = photo
         photoView.isUserInteractionEnabled = true
         let width = photo.size.width
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSecond" {
             var second = segue.destination as! Second
-            second.secondphoto = UIImage(imageLiteralResourceName: String(num))
+            second.secondphoto = UIImage(imageLiteralResourceName: String(num)+".jpg")
         }
     }
     
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         }else{
             num -= 2
         }
-        photo = UIImage(imageLiteralResourceName: String(num))
+        photo = UIImage(imageLiteralResourceName: String(num)+".jpg")
         photoView.image = photo
     }
     
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         }else{
             num -= 2
         }
-        photo = UIImage(imageLiteralResourceName: String(num))
+        photo = UIImage(imageLiteralResourceName: String(num)+".jpg")
         photoView.image = photo
     }
     // リセットボタン IBAction
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         }else{
             num -= 1
         }
-        photo = UIImage(imageLiteralResourceName: String(num))
+        photo = UIImage(imageLiteralResourceName: String(num)+".jpg")
         photoView.image = photo
     }
 }
