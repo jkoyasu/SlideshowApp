@@ -36,19 +36,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        slideButton.setTitle("再生", for: .normal)
-        status = true
-        if self.timer != nil {
-            self.timer.invalidate()
-            self.timer = nil
-            backButton.isEnabled = status
-            forwardButton.isEnabled = status
-        }
         self.performSegue(withIdentifier: "toSecond", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSecond" {
+            slideButton.setTitle("再生", for: .normal)
+            status = true
+            if self.timer != nil {
+                self.timer.invalidate()
+                self.timer = nil
+                backButton.isEnabled = status
+                forwardButton.isEnabled = status
+            }
             var second = segue.destination as! Second
             second.secondphoto = UIImage(imageLiteralResourceName: String(num)+".jpg")
         }
