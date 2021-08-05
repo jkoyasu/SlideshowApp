@@ -1,10 +1,10 @@
 import UIKit
 
 var photo:UIImage!
-var photoView = UIButton()
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var slideButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         slideButton.setTitle("再生", for: .normal)
         
         photo = UIImage(imageLiteralResourceName: String(num))
-        photoView.setImage(photo, for: .normal)
+        photoView.image = photo
+        photoView.isUserInteractionEnabled = true
         let width = photo.size.width
         let height = photo.size.height
         let scale = height / screenHeight
@@ -32,10 +33,9 @@ class ViewController: UIViewController {
         self.view.addSubview(photoView)
         self.view.clipsToBounds = true
         
-        photoView.addTarget(self, action: #selector(self.buttonTapped(_:)), for: .touchUpInside)
     }
     
-     @objc func buttonTapped(_ sender : ViewController) {
+    @IBAction func buttonTapped(_ sender: Any) {
         slideButton.setTitle("再生", for: .normal)
         status = true
         if self.timer != nil {
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
             num -= 2
         }
         photo = UIImage(imageLiteralResourceName: String(num))
-        photoView.setImage(photo, for: .normal)
+        photoView.image = photo
     }
     
     // 再生ボタン IBAction
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
             num -= 2
         }
         photo = UIImage(imageLiteralResourceName: String(num))
-        photoView.setImage(photo, for: .normal)
+        photoView.image = photo
     }
     // リセットボタン IBAction
     @IBAction func goback(_ sender: Any) {
@@ -103,6 +103,6 @@ class ViewController: UIViewController {
             num -= 1
         }
         photo = UIImage(imageLiteralResourceName: String(num))
-        photoView.setImage(photo, for: .normal)
+        photoView.image = photo
     }
 }
